@@ -4,5 +4,5 @@ all:
 	npm install --production
 	
 install:
-	mkdir -p $(DESTDIR)/usr/lib/node_modules/gearman
-	cp -a lib test package.json $(DESTDIR)/usr/lib/node_modules/gearman
+	mkdir -p $(DESTDIR)/usr/lib/node_modules/node-gearman
+	cp -a lib test package.json $(DESTDIR)/usr/lib/node_modules/node-gearman
