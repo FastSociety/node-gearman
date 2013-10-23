@@ -8,5 +8,5 @@ Homepage: https://github.com/FastSociety/node-gearman
 
 Package: node-gearman
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, node-syslog-console
 Description: Nodejs gearman module
