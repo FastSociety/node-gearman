@@ -21,7 +21,7 @@ if (cluster.isMaster) {
   gearman.registerWorker("fetch", function(payload, worker){
     console.log('Payload: ' + payload);
     if(!payload){
-        worker.error();
+        worker.errorAndGrabJob();
         return;
     }
 
@@ -36,11 +36,11 @@ if (cluster.isMaster) {
             body += chunk;
         });
         res.on('end', function() {
-            worker.end(body);
+            worker.endAndGrabJob(body);
         });
     }).on('error', function(e) {  
         console.log("Got error: " + e.message);
-        worker.error();
+        worker.errorAndGrabJob();
     });
   });
 };

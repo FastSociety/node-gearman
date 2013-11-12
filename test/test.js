@@ -70,7 +70,7 @@ exports["Worker and Client"] = {
         
         this.gearman.registerWorker("test", function(payload, worker){
             test.equal(payload.toString("base64"), data1.toString("base64"));
-            worker.end(data2);
+            worker.endAndGrabJob(data2);
         });
 
         var job = this.gearman.submitJob("test", data1);
@@ -88,7 +88,7 @@ exports["Worker and Client"] = {
     "Worker fails": function(test){
         test.expect(1);
         this.gearman.registerWorker("test", function(payload, worker){
-            worker.error();
+            worker.errorAndGrabJob();
         });
 
         var job = this.gearman.submitJob("test", "test");
@@ -143,7 +143,7 @@ exports["Job timeout"] = {
         
         this.gearman.registerWorker("test", function(payload, worker){
             setTimeout(function(){
-                worker.end("OK");
+                worker.endAndGrabJob("OK");
             }, 300);
         });
     },

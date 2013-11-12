@@ -93,11 +93,11 @@ Example:
 
     gearman.registerWorker("reverse", function(payload, worker){
         if(!payload){
-            worker.error();
+            worker.errorAndGrabJob();
             return;
         }
         var reversed = payload.toString("utf-8").split("").reverse().join("");
-        worker.end(reversed);
+        worker.endAndGrabJob(reversed);
     });
 
 ## Job timeout
